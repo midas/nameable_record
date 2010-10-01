@@ -6,10 +6,10 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "nameable_record"
     gem.summary = %Q{Encapsulates the composed of pattern for names into any easy to use library.}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.description = %Q{Encapsulates the composed of pattern for names into any easy to use library.}
     gem.email = "jason@lookforwardenterprises.com"
     gem.homepage = "http://github.com/midas/nameable_record"
-    gem.authors = ["Jason Harrelson"]
+    gem.authors = ["C. Jason Harrelson"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
