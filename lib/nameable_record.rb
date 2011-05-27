@@ -8,3 +8,4 @@ module NameableRecord
 end
 
 ActiveRecord::Base.send( :include, NameableRecord::ActiveRecordExtensions ) if defined?( ActiveRecord::Base )
+
