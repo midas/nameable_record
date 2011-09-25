@@ -55,7 +55,7 @@ describe NameableRecord::Name do
 
     subject { described_class::PREFIX_BASE.sort }
 
-    it { should == %w(Mr Mrs Miss Dr).sort }
+    it { should == %w(Mr Mrs Miss Dr General).sort }
 
   end
 
@@ -71,7 +71,7 @@ describe NameableRecord::Name do
 
     subject { described_class::PREFIXES }
 
-    it { should == ["DR", "DR.", "Dr", "Dr.", "MISS", "MISS.", "MR", "MR.", "MRS", "MRS.", "Miss", "Miss.", "Mr", "Mr.", "Mrs", "Mrs.", "dr", "dr.", "miss", "miss.", "mr", "mr.", "mrs", "mrs."] }
+    it { should == ["DR", "DR.", "Dr", "Dr.", "GENERAL", "GENERAL.", "General", "General.", "MISS", "MISS.", "MR", "MR.", "MRS", "MRS.", "Miss", "Miss.", "Mr", "Mr.", "Mrs", "Mrs.", "dr", "dr.", "general", "general.", "miss", "miss.", "mr", "mr.", "mrs", "mrs."] }
 
   end
 
@@ -80,74 +80,6 @@ describe NameableRecord::Name do
     subject { described_class::SUFFIXES }
 
     it { should == ["ESQ", "ESQ.", "Esq", "Esq.", "III", "III", "III.", "III.", "IV", "IV", "IV.", "IV.", "JR", "JR.", "Jr", "Jr.", "V", "V", "V.", "V.", "esq", "esq.", "iii", "iii.", "iv", "iv.", "jr", "jr.", "v", "v."] }
-
-  end
-
-  context 'PREFIXES_CORRECTIONS' do
-
-    subject { described_class::PREFIXES_CORRECTIONS }
-
-    it { should == {
-           "dr."   => "Dr",
-           "Dr."   => "Dr",
-           "DR."   => "Dr",
-           "dr"    => "Dr",
-           "Dr"    => "Dr",
-           "DR"    => "Dr",
-           "mrs."  => "Mrs",
-           "Mrs."  => "Mrs",
-           "MRS."  => "Mrs",
-           "mrs"   => "Mrs",
-           "Mrs"   => "Mrs",
-           "MRS"   => "Mrs",
-           "miss"  => "Miss",
-           "Miss"  => "Miss",
-           "MISS"  => "Miss",
-           "miss." => "Miss",
-           "Miss." => "Miss",
-           "MISS." => "Miss",
-           "mr."   => "Mr",
-           "Mr."   => "Mr",
-           "mr"    => "Mr",
-           "Mr"    => "Mr",
-           "MR"    => "Mr",
-           "MR."   => "Mr"
-       }
-    }
-
-  end
-
-  context 'SUFFIXES_CORRECTIONS' do
-
-    subject { described_class::SUFFIXES_CORRECTIONS }
-
-    it { should == {
-           "jr"   => "Jr",
-           "jr."  => "Jr",
-           "Jr."  => "Jr",
-           "JR."  => "Jr",
-           "Jr"   => "Jr",
-           "JR"   => "Jr",
-           "iii." => "III",
-           "III." => "III",
-           "iii"  => "III",
-           "III"  => "III",
-           "IV."  => "IV",
-           "iv"   => "IV",
-           "iv."  => "IV",
-           "IV"   => "IV",
-           "v."   => "V",
-           "V"    => "V",
-           "v"    => "V",
-           "V."   => "V",
-           "esq"  => "Esq",
-           "esq." => "Esq",
-           "ESQ." => "Esq",
-           "Esq"  => "Esq",
-           "ESQ"  => "Esq",
-           "Esq." => "Esq"
-       }
-    }
 
   end
 

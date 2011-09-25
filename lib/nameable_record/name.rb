@@ -56,7 +56,7 @@ module NameableRecord
        /%s/ => :suffix
     }.freeze
 
-    PREFIX_BASE =  %w(Mr Mrs Miss Dr)  # The order of this matters because of PREFIXES_CORRECTIONS
+    PREFIX_BASE =  %w(Mr Mrs Miss Dr General)  # The order of this matters because of PREFIXES_CORRECTIONS
     SUFFIX_BASE =  %w(Jr III V IV Esq) # The order of this matters because of SUFFIXES_CORRECTIONS
 
     PREFIXES    = PREFIX_BASE.map { |p| [p, "#{p}.", p.upcase, "#{p.upcase}.", p.downcase, "#{p.downcase}."] }.flatten.sort
