@@ -1,11 +1,10 @@
-$:.unshift(File.dirname(__FILE__)) unless
-  $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
-require 'nameable_record/active_record_extensions'
-require 'nameable_record/name'
+require "nameable_record/railtie" if defined?( ::Rails )
+require "nameable_record/version"
 
 module NameableRecord
-  VERSION = '0.1.0'
-end
 
-ActiveRecord::Base.send( :include, NameableRecord::ActiveRecordExtensions ) if defined?( ActiveRecord::Base )
+  autoload :ActiveRecordExtensions, 'nameable_record/active_record_extensions'
+  autoload :Name,                   'nameable_record/name'
+
+end
 

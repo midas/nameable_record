@@ -1,4 +1,6 @@
 require 'rubygems'
+require 'active_record'
+require 'rails'
 require 'bundler/setup'
 
 require 'nameable_record'
@@ -7,6 +9,10 @@ RSpec.configure do |config|
 
   config.mock_with :rspec
 
+end
+
+def name_parts
+  %w(Smith John Mr. Jacob III)
 end
 
 class Hash
