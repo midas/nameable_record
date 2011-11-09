@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nameable_record (2.0.0)
+    nameable_record (1.0.0)
 
 GEM
   remote: http://rubygems.org/
