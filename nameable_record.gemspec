@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
 
   # specify any dependencies here; for example:
   %w(
+    gem-dandy
     rspec
     rails
   ).each do |development_dependency|
