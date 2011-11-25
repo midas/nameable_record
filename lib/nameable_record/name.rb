@@ -22,6 +22,10 @@ module NameableRecord
       self == another_name
     end
 
+    def <=>( another_name )
+      self.to_s( :full_with_middle ) <=> another_name.to_s( :full_with_middle )
+    end
+
     # Creates a name based on pattern provided.  Defaults to last, first.
     #
     # Symbols:
@@ -56,8 +60,8 @@ module NameableRecord
        /%s/ => :suffix
     }.freeze
 
-    PREFIX_BASE =  %w(Mr Mrs Miss Dr General)  # The order of this matters because of PREFIXES_CORRECTIONS
-    SUFFIX_BASE =  %w(Jr III V IV Esq) # The order of this matters because of SUFFIXES_CORRECTIONS
+    PREFIX_BASE =  %w(Mr Mrs Miss Dr General Pastor Bishop Agent Rep)  # The order of this matters because of PREFIXES_CORRECTIONS
+    SUFFIX_BASE =  %w(Jr III V IV Esq MD DDS) # The order of this matters because of SUFFIXES_CORRECTIONS
 
     PREFIXES    = PREFIX_BASE.map { |p| [p, "#{p}.", p.upcase, "#{p.upcase}.", p.downcase, "#{p.downcase}."] }.flatten.sort
     SUFFIXES    = SUFFIX_BASE.map { |p| [p, "#{p}.", p.upcase, "#{p.upcase}.", p.downcase, "#{p.downcase}."] }.flatten.sort

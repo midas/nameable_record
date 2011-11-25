@@ -12,6 +12,10 @@ describe NameableRecord::Name do
     described_class.new *name_parts
   end
 
+  let :another_name_for_sorting do
+    described_class.new *%w(Smith Jason Mr. Jacob III)
+  end
+
   it 'should be frozen after initialization' do
     subject.should be_frozen
   end
@@ -19,6 +23,14 @@ describe NameableRecord::Name do
   it 'should know when it is equal to another Name' do
     subject.eql?( another_name ).should be_true
     subject.==( another_name ).should be_true
+  end
+
+  context '#<=>' do
+
+    it 'should correctly sort' do
+      [name, another_name_for_sorting].sort.should == [another_name_for_sorting, name]
+    end
+
   end
 
   context 'PREDEFINED_PATTERNS' do
@@ -55,7 +67,7 @@ describe NameableRecord::Name do
 
     subject { described_class::PREFIX_BASE.sort }
 
-    it { should == %w(Mr Mrs Miss Dr General).sort }
+    it { should == %w(Mr Mrs Miss Dr General Agent Bishop Pastor Rep).sort }
 
   end
 
@@ -63,7 +75,7 @@ describe NameableRecord::Name do
 
     subject { described_class::SUFFIX_BASE.sort }
 
-    it { should == %w(Jr III IV V Esq).sort }
+    it { should == %w(Jr III IV V Esq DDS MD).sort }
 
   end
 
@@ -71,7 +83,7 @@ describe NameableRecord::Name do
 
     subject { described_class::PREFIXES }
 
-    it { should == ["DR", "DR.", "Dr", "Dr.", "GENERAL", "GENERAL.", "General", "General.", "MISS", "MISS.", "MR", "MR.", "MRS", "MRS.", "Miss", "Miss.", "Mr", "Mr.", "Mrs", "Mrs.", "dr", "dr.", "general", "general.", "miss", "miss.", "mr", "mr.", "mrs", "mrs."] }
+    it { should == ["AGENT", "AGENT.", "Agent", "Agent.", "BISHOP", "BISHOP.", "Bishop", "Bishop.", "DR", "DR.", "Dr", "Dr.", "GENERAL", "GENERAL.", "General", "General.", "MISS", "MISS.", "MR", "MR.", "MRS", "MRS.", "Miss", "Miss.", "Mr", "Mr.", "Mrs", "Mrs.", "PASTOR", "PASTOR.", "Pastor", "Pastor.", "REP", "REP.", "Rep", "Rep.", "agent", "agent.", "bishop", "bishop.", "dr", "dr.", "general", "general.", "miss", "miss.", "mr", "mr.", "mrs", "mrs.", "pastor", "pastor.", "rep", "rep."] }
 
   end
 
@@ -79,7 +91,7 @@ describe NameableRecord::Name do
 
     subject { described_class::SUFFIXES }
 
-    it { should == ["ESQ", "ESQ.", "Esq", "Esq.", "III", "III", "III.", "III.", "IV", "IV", "IV.", "IV.", "JR", "JR.", "Jr", "Jr.", "V", "V", "V.", "V.", "esq", "esq.", "iii", "iii.", "iv", "iv.", "jr", "jr.", "v", "v."] }
+    it { should == ["DDS", "DDS", "DDS.", "DDS.", "ESQ", "ESQ.", "Esq", "Esq.", "III", "III", "III.", "III.", "IV", "IV", "IV.", "IV.", "JR", "JR.", "Jr", "Jr.", "MD", "MD", "MD.", "MD.", "V", "V", "V.", "V.", "dds", "dds.", "esq", "esq.", "iii", "iii.", "iv", "iv.", "jr", "jr.", "md", "md.", "v", "v."] }
 
   end
 
