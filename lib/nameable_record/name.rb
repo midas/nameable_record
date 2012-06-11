@@ -36,12 +36,45 @@ module NameableRecord
     #   %s - suffix
     #
     def to_s( pattern='%l, %f' )
-      pattern = PREDEFINED_PATTERNS[pattern] if pattern.is_a?( Symbol )
+      if pattern.is_a?( Symbol )
+        return conversational if pattern == :conversational
+        return sortable if pattern == :sortable
+        pattern = PREDEFINED_PATTERNS[pattern]
+      end
 
       PATTERN_MAP.inject( pattern ) do |name, mapping|
         name = name.gsub( mapping.first,
                           (send( mapping.last ) || '') )
       end
+    end
+
+    # Returns the name in a conversational format.
+    #
+    def conversational
+      [
+        prefix,
+        first,
+        middle,
+        last,
+        suffix
+      ].reject( &:blank? ).
+        join( ' ' )
+    end
+
+    # Returns the name in a sortable format.
+    #
+    def sortable
+      [
+        last,
+        [
+          prefix,
+          first,
+          middle,
+          suffix
+        ].reject( &:blank? ).
+          join( ' ' )
+      ].reject( &:blank? ).
+        join( ', ' )
     end
 
     PREDEFINED_PATTERNS = {
