@@ -1,7 +1,7 @@
-source :rubygems
+source 'https://rubygems.org'
 
-group :development, :test do
-  gem 'ruby-debug'
+group :developmen, :test do
+  gem 'debugger', :require => 'ruby-debug'
 	gem 'guard'
   gem 'rb-fsevent'
   gem 'growl'
