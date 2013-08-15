@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/midas/nameable_record"
   s.summary     = %q{Abstracts the ActiveRecord composed_of pattern for names.}
   s.description = %q{Abstracts the ActiveRecord composed_of pattern for names.  Also provides other convenience utilieis for working with human names.}
+  s.license     = "MIT"
 
   s.rubyforge_project = "nameable_record"
 
